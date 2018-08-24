@@ -1,0 +1,48 @@
+<button class="btn btn-default" [routerLink]="[ '/pokemonList']">
+	Voltar a Lista
+</button>
+<div class="clearfix"></div>
+<br>
+<div *ngIf='!pokemonData'>
+	Loading...
+</div>
+<div *ngIf='pokemonData'>
+	<div class="color-light">
+		<div class="align-center text-center">
+			<img [src]="pokemonData.sprites.front_default" alt="{{pokemonData.name}}">
+		</div>
+		<div><b>Id: </b>&nbsp;{{pokemonData.id}}</div>
+		<div><b>Nome: </b>&nbsp;{{pokemonData.name | titlecase}}</div>
+		<div><b>Altura: </b>&nbsp;{{pokemonData.height }}</div>
+		<div><b>Peso: </b>&nbsp;{{pokemonData.weight }}</div>
+		<div><b>Experiência: </b>&nbsp;{{pokemonData.base_experience }}</div>
+	</div>
+
+	<div class="color-light">
+		<div class="align-center text-center">
+			<b>Tipos</b>
+		</div>
+		<div *ngFor="let type of pokemonData.types">
+			{{type.type.name | titlecase}}
+		</div>
+	</div>
+
+	<div class="color-light">
+		<div class="align-center text-center">
+			<b>Habilidades</b>
+		</div>
+		<div *ngFor="let ability of pokemonData.abilities">
+			{{ability.ability.name | titlecase}}
+		</div>
+	</div>
+
+	<div class="color-light">
+		<div class="align-center text-center">
+			<b>Estados</b>
+		</div>
+		<div *ngFor="let st of pokemonData.stats">
+			<div>{{st.stat.name | titlecase}} / <b> Esforço :</b> {{st.effort }}</div>
+		</div>
+	</div>
+
+</div>

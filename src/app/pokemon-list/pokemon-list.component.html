@@ -1,0 +1,15 @@
+<div *ngIf="!pokemonsList">
+	Loading...
+</div>
+<div *ngIf="pokemonsList">
+	<div *ngFor="let pokemon of pokemonsList" class="color-light">
+		<a class="btn btn-link" (click)="goToDetails(pokemon.url)">
+			<strong>{{pokemon.name | titlecase}}</strong>
+		</a>
+	</div>
+	<hr>
+	<div class="text-center">
+		<button class="btn btn-default" (click)="onRequestNewOffset(previousList)" [disabled]='!previousList'> Previous </button> &nbsp;
+		<button class="btn btn-default" (click)="onRequestNewOffset(nextList)" [disabled]='!nextList'> Next </button>
+	</div>
+</div>
